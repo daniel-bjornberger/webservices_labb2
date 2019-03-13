@@ -1,11 +1,10 @@
 package com.example.movies;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-import org.springframework.web.client.RestTemplate;
+import lombok.Data;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Data
 @Entity
 public class Movie {
 
@@ -21,11 +20,11 @@ public class Movie {
     private String country;
     private String imdbRating;
 
-    private final static String url = "http://www.omdbapi.com/?apikey=43576692&i=";
-    private final static RestTemplate restTemplate = new RestTemplate();
+    /*private final static String url = "http://www.omdbapi.com/?apikey=43576692&i=";
+    private final static RestTemplate restTemplate = new RestTemplate();*/
 
 
-    public Movie(String movieId, boolean haveSeen, boolean wantToSee) throws JSONException {
+    /*public Movie(String movieId, boolean haveSeen, boolean wantToSee) throws JSONException {
 
         JSONObject obj = new JSONObject(restTemplate.getForObject(url + movieId, String.class));
 
@@ -52,7 +51,7 @@ public class Movie {
 
         }
 
-    }
+    }*/
 
 
 }

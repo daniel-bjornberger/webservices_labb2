@@ -52,7 +52,27 @@ public class MoviesController {
     }
 
 
+    @PutMapping("/movies/{movieId}")
+    public Movie change(@RequestBody Movie movie, @PathVariable String movieId){
 
+        return repository.findById(movieId).map(storedMovie -> {
+
+            storedMovie.setHaveSeen(movie.isHaveSeen());
+            storedMovie.setWantToSee(movie.isWantToSee());
+            storedMovie.setTitle(movie.getTitle());
+            storedMovie.setDirector(movie.getDirector());
+            storedMovie.setActors(movie.getActors());
+            storedMovie.setRunTime(movie.getRunTime());
+            storedMovie.setGenre(movie.getGenre());
+            storedMovie.setReleaseDate(movie.getReleaseDate());
+            storedMovie.setCountry(movie.getCountry());
+            storedMovie.setImdbRating(movie.getImdbRating());
+
+            return repository.save(storedMovie);
+
+        }).orElseThrow( () -> new MovieException("No movie found with id: " + movieId));
+
+    }
 
 
 }
