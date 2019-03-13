@@ -1,17 +1,16 @@
 package com.example.movies;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 
 @RestController
-public class MoviesController {
+public class MovieController {
 
     private MovieRepository repository;
 
 
-    public MoviesController(MovieRepository repository) {
+    public MovieController(MovieRepository repository) {
 
         this.repository = repository;
 
