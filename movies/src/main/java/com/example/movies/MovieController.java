@@ -18,7 +18,7 @@ public class MovieController {
 
 
     @GetMapping("/movies")
-    public List<Movie> getAll(){
+    public List<Movie> getAllMovies(){
 
         return repository.findAll();
 
@@ -26,7 +26,7 @@ public class MovieController {
 
 
     @GetMapping("/movies/{movieId}")
-    public Movie getOne(@PathVariable String movieId){
+    public Movie getOneMovie(@PathVariable String movieId){
 
         return repository.findById(movieId)
 
@@ -36,7 +36,7 @@ public class MovieController {
 
 
     @PostMapping("/movies")
-    public Movie create(@RequestBody Movie movie) {
+    public Movie createMovie(@RequestBody Movie movie) {
 
         return repository.save(movie);
 
@@ -44,7 +44,7 @@ public class MovieController {
 
 
     @DeleteMapping("/movies/{movieId}")
-    public void delete(@PathVariable String movieId){
+    public void deleteMovie(@PathVariable String movieId){
 
         repository.deleteById(movieId);
 
@@ -52,7 +52,7 @@ public class MovieController {
 
 
     @PutMapping("/movies/{movieId}")
-    public Movie change(@RequestBody Movie movie, @PathVariable String movieId){
+    public Movie changeMovie(@RequestBody Movie movie, @PathVariable String movieId){
 
         return repository.findById(movieId).map(storedMovie -> {
 
