@@ -19,5 +19,5 @@ public class Movie {
     private String releaseDate;
     private String country;
     private String imdbRating;
-    
+
 }
