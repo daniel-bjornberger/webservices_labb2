@@ -30,7 +30,7 @@ public class MovieController {
 
         return repository.findById(movieId)
 
-                .orElseThrow( () -> new MovieException("No movie found with id: " + movieId));
+                .orElseThrow( () -> new MovieNotFoundException(movieId));
 
     }
 
@@ -46,7 +46,17 @@ public class MovieController {
     @DeleteMapping("/movies/{movieId}")
     public void deleteMovie(@PathVariable String movieId){
 
-        repository.deleteById(movieId);
+        if (repository.existsById(movieId)) {
+
+            repository.deleteById(movieId);
+
+        }
+
+        else {
+
+            throw new MovieNotFoundException(movieId);
+
+        }
 
     }
 
@@ -69,7 +79,7 @@ public class MovieController {
 
             return repository.save(storedMovie);
 
-        }).orElseThrow( () -> new MovieException("No movie found with id: " + movieId));
+        }).orElseThrow( () -> new MovieNotFoundException(movieId));
 
     }
 
