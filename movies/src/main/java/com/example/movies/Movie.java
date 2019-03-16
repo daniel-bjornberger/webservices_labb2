@@ -6,7 +6,7 @@ import javax.persistence.Id;
 
 @Data
 @Entity
-public class Movie {
+class Movie {
 
     private @Id String movieId;
     private boolean haveSeen;
