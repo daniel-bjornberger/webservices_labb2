@@ -38,7 +38,17 @@ public class MovieController {
     @PostMapping("/movies")
     public Movie createMovie(@RequestBody Movie movie) {
 
-        return repository.save(movie);
+        if (repository.existsById(movie.getMovieId())) {
+
+            throw new MovieAlreadyExistsException(movie.getMovieId());
+
+        }
+
+        else {
+
+            return repository.save(movie);
+
+        }
 
     }
 
