@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Class-Path: commons-codec-1.9.jar httpmime-4.5.2.jar httpclient-4.5.2.
+ jar httpcore-4.4.4.jar httpasyncclient-4.1.1.jar unirest-java-1.4.9.j
+ ar gson-2.8.5.jar json-20160212.jar spring-jcl-5.1.5.RELEASE.jar spri
+ ng-beans-5.1.5.RELEASE.jar commons-logging-1.2.jar spring-web-5.1.5.R
+ ELEASE.jar spring-core-5.1.5.RELEASE.jar httpcore-nio-4.4.4.jar
+Main-Class: clientpackage.ClientMain
+
