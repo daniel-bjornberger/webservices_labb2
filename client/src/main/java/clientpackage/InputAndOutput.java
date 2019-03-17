@@ -123,11 +123,28 @@ public class InputAndOutput {
 
 
 
-    public void close(){
-        this.scanner.close();
+    public void printHaveSeenAndWantToSee(MovieInClient movieInClient) {
+
+        String haveSeen = "No";
+        String wantToSee = "No";
+
+        if (movieInClient.isHaveSeen()) {
+            haveSeen = "Yes";
+        }
+
+        if (movieInClient.isWantToSee()) {
+            wantToSee = "Yes";
+        }
+
+        printString("Current settings:\n\nHave seen:   " + haveSeen + "\nWant to see: " + wantToSee);
+
     }
 
 
+
+    public void close(){
+        this.scanner.close();
+    }
 
 
 }

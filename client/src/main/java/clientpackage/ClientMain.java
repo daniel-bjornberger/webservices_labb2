@@ -39,15 +39,27 @@ public class ClientMain {
 
                 case 3:
                     MovieInClient movieInClient = MovieInClient.createMovieBrief(inputAndOutput);
-                    httpRequests.createMovie();
+                    try {
+                        inputAndOutput.printString(httpRequests.createMovie(movieInClient.movieToJsonString()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 4:
-                    System.out.println("delete movie");
+                    try {
+                        inputAndOutput.printString(httpRequests.deleteMovie(inputAndOutput.getMovieId()));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 5:
-                    System.out.println("change movie");
+                    try {
+                        inputAndOutput.printString(httpRequests.changeMovie(inputAndOutput.getMovieId(), inputAndOutput));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                     break;
 
                 case 6:
@@ -57,7 +69,7 @@ public class ClientMain {
                     break;
 
                 case 7:
-                    inputAndOutput.printString("Goodbye!");
+                    inputAndOutput.printString("\nGoodbye!");
 
                     inputAndOutput.close();
 

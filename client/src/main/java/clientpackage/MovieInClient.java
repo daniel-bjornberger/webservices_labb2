@@ -64,14 +64,9 @@ public class MovieInClient {
         } while (!obj.getBoolean("Response"));
 
 
-        inputAndOutput.printString("Have you seen this movie?");
+        boolean haveSeen = enterHaveSeen(inputAndOutput);
 
-        boolean haveSeen = inputAndOutput.returnTrueOrFalse();
-
-
-        inputAndOutput.printString("Do you want to see this movie?");
-
-        boolean wantToSee = inputAndOutput.returnTrueOrFalse();
+        boolean wantToSee = enterWantToSee(inputAndOutput);
 
 
         return new MovieInClient(obj.getString("imdbID"), haveSeen, wantToSee, obj.getString("Title"),
@@ -86,6 +81,56 @@ public class MovieInClient {
     public String movieToJsonString() {
 
         return new Gson().toJson(this);
+
+    }
+
+    public static MovieInClient jsonStringToMovie(String jsonString){
+
+        return new Gson().fromJson(jsonString, MovieInClient.class);
+
+    }
+
+
+
+    public boolean isHaveSeen() {
+        return haveSeen;
+    }
+
+
+
+    public void setHaveSeen(boolean haveSeen) {
+        this.haveSeen = haveSeen;
+    }
+
+
+
+    public boolean isWantToSee() {
+        return wantToSee;
+    }
+
+
+
+    public void setWantToSee(boolean wantToSee) {
+        this.wantToSee = wantToSee;
+    }
+
+
+
+    public static boolean enterHaveSeen(InputAndOutput inputAndOutput) {
+
+        inputAndOutput.printString("\nHave you seen this movie? Enter y/Y or n/N:");
+
+        return inputAndOutput.returnTrueOrFalse();
+
+    }
+
+
+
+    public static boolean enterWantToSee(InputAndOutput inputAndOutput) {
+
+        inputAndOutput.printString("\nDo you want to see this movie? Enter y/Y or n/N:");
+
+        return inputAndOutput.returnTrueOrFalse();
 
     }
 
