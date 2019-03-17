@@ -12,7 +12,7 @@ import java.net.URISyntaxException;
 import static java.awt.Desktop.getDesktop;
 
 
-public class HttpRequests {
+class HttpRequests {
 
 
     private final static String awsUrl = "http://moviedatabase-env.ma3bh5uw39.eu-north-1.elasticbeanstalk.com/";
@@ -23,12 +23,12 @@ public class HttpRequests {
 
 
 
-    public HttpRequests(){
+    HttpRequests(){
     }
 
 
 
-    public String getAllMovies() throws Exception {
+    String getAllMovies() throws Exception {
 
         HttpResponse<JsonNode> response = Unirest.get(awsUrl + apiName)
                 .header("accept", "application/json")
@@ -69,7 +69,7 @@ public class HttpRequests {
 
 
 
-    public String getOneMovie(String movieId) throws Exception {
+    String getOneMovie(String movieId) throws Exception {
 
         int status = headResponseStatus(movieId);
 
@@ -105,7 +105,7 @@ public class HttpRequests {
 
 
 
-    public String createMovie(String jsonString) throws Exception {
+    String createMovie(String jsonString) throws Exception {
 
         JSONObject jsonObject = new JSONObject(jsonString);
 
@@ -148,7 +148,7 @@ public class HttpRequests {
 
 
 
-    public String deleteMovie(String movieId) throws Exception {
+    String deleteMovie(String movieId) throws Exception {
 
         int status = headResponseStatus(movieId);
 
@@ -185,7 +185,7 @@ public class HttpRequests {
 
 
 
-    public String changeMovie(String movieId, InputAndOutput inputAndOutput) throws Exception {
+    String changeMovie(String movieId, InputAndOutput inputAndOutput) throws Exception {
 
         int status = headResponseStatus(movieId);
 
@@ -241,7 +241,7 @@ public class HttpRequests {
 
 
 
-    public void displaySwaggerApiDocumentation() {
+    void displaySwaggerApiDocumentation() {
 
         try {
 
@@ -272,7 +272,7 @@ public class HttpRequests {
 
 
 
-    public void shutDownUnirest() throws IOException {
+    void shutDownUnirest() throws IOException {
 
         Unirest.shutdown();
 

@@ -3,32 +3,32 @@ package clientpackage;
 import java.util.Scanner;
 
 
-public class InputAndOutput {
+class InputAndOutput {
 
 
     private Scanner scanner;
 
 
 
-    public InputAndOutput() {
+    InputAndOutput() {
         this.scanner = new Scanner(System.in);
     }
 
 
 
-    public void printString(String outString) {
+    void printString(String outString) {
         System.out.println(outString + "\n\n");
     }
 
 
 
-    public String getString(){
+    private String getString(){
         return this.scanner.nextLine();
     }
 
 
 
-    public String getMovieId() {
+    String getMovieId() {
 
         printString("Enter a IMDB movie id, in the format: tt1234567 (the letters 'tt' and 7 digits):");
 
@@ -46,7 +46,7 @@ public class InputAndOutput {
 
 
 
-    public int menuInput() {
+    int menuInput() {
 
         String optionString;
         boolean inputOk;
@@ -68,7 +68,7 @@ public class InputAndOutput {
 
 
 
-    public boolean menuChoiceOk(String inputString) {
+    private boolean menuChoiceOk(String inputString) {
 
         boolean inputOk = false;
 
@@ -90,22 +90,7 @@ public class InputAndOutput {
 
 
 
-    public String returnNonemptyString() {
-
-        String returnString = getString();
-
-        while (returnString.length() == 0) {
-
-            printString("Please enter a nonempty string.");
-            returnString = getString();
-        }
-
-        return returnString;
-    }
-
-
-
-    public boolean returnTrueOrFalse() {
+    boolean returnTrueOrFalse() {
 
         String inputString;
 
@@ -123,7 +108,7 @@ public class InputAndOutput {
 
 
 
-    public void printHaveSeenAndWantToSee(MovieInClient movieInClient) {
+    void printHaveSeenAndWantToSee(MovieInClient movieInClient) {
 
         String haveSeen = "No";
         String wantToSee = "No";
@@ -142,7 +127,7 @@ public class InputAndOutput {
 
 
 
-    public void close(){
+    void close(){
         this.scanner.close();
     }
 

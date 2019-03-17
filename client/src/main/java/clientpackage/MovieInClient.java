@@ -5,7 +5,7 @@ import org.json.JSONObject;
 import org.springframework.web.client.RestTemplate;
 
 
-public class MovieInClient {
+class MovieInClient {
 
     private String movieId;
     private boolean haveSeen;
@@ -23,7 +23,7 @@ public class MovieInClient {
     private final static RestTemplate restTemplate = new RestTemplate();
 
 
-    public MovieInClient(String movieId, boolean haveSeen, boolean wantToSee, String title, String director, String actors, String runTime, String genre, String releaseDate, String country, String imdbRating) {
+    private MovieInClient(String movieId, boolean haveSeen, boolean wantToSee, String title, String director, String actors, String runTime, String genre, String releaseDate, String country, String imdbRating) {
 
         this.movieId = movieId;
         this.haveSeen = haveSeen;
@@ -41,13 +41,11 @@ public class MovieInClient {
 
 
 
-    public static MovieInClient createMovieBrief(InputAndOutput inputAndOutput) {
+    static MovieInClient createMovieBrief(InputAndOutput inputAndOutput) {
 
         String movieId;
 
         JSONObject obj;
-
-        Gson gson = new Gson();
 
         do {
 
@@ -78,13 +76,13 @@ public class MovieInClient {
 
 
 
-    public String movieToJsonString() {
+    String movieToJsonString() {
 
         return new Gson().toJson(this);
 
     }
 
-    public static MovieInClient jsonStringToMovie(String jsonString){
+    static MovieInClient jsonStringToMovie(String jsonString){
 
         return new Gson().fromJson(jsonString, MovieInClient.class);
 
@@ -92,31 +90,31 @@ public class MovieInClient {
 
 
 
-    public boolean isHaveSeen() {
+    boolean isHaveSeen() {
         return haveSeen;
     }
 
 
 
-    public void setHaveSeen(boolean haveSeen) {
+    void setHaveSeen(boolean haveSeen) {
         this.haveSeen = haveSeen;
     }
 
 
 
-    public boolean isWantToSee() {
+    boolean isWantToSee() {
         return wantToSee;
     }
 
 
 
-    public void setWantToSee(boolean wantToSee) {
+    void setWantToSee(boolean wantToSee) {
         this.wantToSee = wantToSee;
     }
 
 
 
-    public static boolean enterHaveSeen(InputAndOutput inputAndOutput) {
+    static boolean enterHaveSeen(InputAndOutput inputAndOutput) {
 
         inputAndOutput.printString("\nHave you seen this movie? Enter y/Y or n/N:");
 
@@ -126,7 +124,7 @@ public class MovieInClient {
 
 
 
-    public static boolean enterWantToSee(InputAndOutput inputAndOutput) {
+    static boolean enterWantToSee(InputAndOutput inputAndOutput) {
 
         inputAndOutput.printString("\nDo you want to see this movie? Enter y/Y or n/N:");
 
